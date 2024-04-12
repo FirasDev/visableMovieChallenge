@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:visable_challenge/app/dependancy/injection.dart';
 import 'package:visable_challenge/app/movie_theme_data.dart';
 import 'package:visable_challenge/app/router/router.dart';
 
-void main() {
+void main() async {
+  await configureDependencies();
+  await dotenv.load();
   runApp(const MyApp());
 }
 

@@ -1,5 +1,3 @@
-//ignore_for_file: unused-code
-
 import 'package:equatable/equatable.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:visable_challenge/app/error/failures.dart';

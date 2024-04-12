@@ -7,7 +7,7 @@ abstract class RegisterModule {
   http.Dio dio() {
     final dioClient = http.Dio(
       http.BaseOptions(
-        baseUrl: 'tmdb url',
+        baseUrl: 'https://api.themoviedb.org/3',
       ),
     );
     return dioClient;

@@ -5,6 +5,6 @@ class MovieThemeData {
 
   /// Returns a [ThemeData] object based on the [MovieThemeData] object.
   static ThemeData get lightThemeData {
-    return ThemeData(primaryColor: Colors.blueAccent);
+    return ThemeData(primaryColor: Colors.deepPurple.shade900);
   }
 }
