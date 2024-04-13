@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:visable_challenge/app/components/movies_slider.dart';
 import 'package:visable_challenge/app/components/section_header.dart';
-import 'package:visable_challenge/app/components/section_list_view.dart';
-import 'package:visable_challenge/app/components/section_list_view_card.dart';
-import 'package:visable_challenge/app/components/slider_card.dart';
+import 'package:visable_challenge/features/movies/application/presentation/widgets/section_list_view.dart';
+import 'package:visable_challenge/features/movies/application/presentation/widgets/section_list_view_card.dart';
+import 'package:visable_challenge/features/movies/application/presentation/widgets/slider_card.dart';
 import 'package:visable_challenge/app/theme/visable_strings.dart';
 import 'package:visable_challenge/features/movies/application/presentation/widgets/search_widget.dart';
 import 'package:visable_challenge/features/movies/domain/entity/movie.dart';

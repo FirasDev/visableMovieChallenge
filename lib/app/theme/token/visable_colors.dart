@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class VisableColors {
-  static const primary = Color(0xFF311B92);
+  static const primary = Color(0xFF36393e);
   static const secondary = Color(0xff272b30);
   static const error = Colors.red;
   static const black = Colors.black;

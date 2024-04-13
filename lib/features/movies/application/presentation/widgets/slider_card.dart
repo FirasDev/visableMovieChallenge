@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:visable_challenge/app/components/slider_card_image.dart';
 import 'package:visable_challenge/app/theme/token/visable_colors.dart';
 import 'package:visable_challenge/app/theme/visable_spacing.dart';
 import 'package:visable_challenge/app/theme/visable_typography.dart';
 import 'package:visable_challenge/app/utils/extension/context_extension.dart';
+import 'package:visable_challenge/features/movies/application/presentation/pages/movie_details_page.dart';
 import 'package:visable_challenge/features/movies/domain/entity/movie.dart';
 
 class SliderCard extends StatelessWidget {
@@ -21,7 +23,10 @@ class SliderCard extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
-        //TODO: add navigate to details view
+        context.pushNamed(
+          MovieDetailsPage.routeName,
+          extra: movie,
+        );
       },
       child: SafeArea(
         child: Stack(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:visable_challenge/app/components/image_with_shimmer.dart';
 import 'package:visable_challenge/app/components/visable_gap.dart';
 import 'package:visable_challenge/app/helper/tmdb_config.dart';
@@ -6,6 +7,7 @@ import 'package:visable_challenge/app/theme/token/visable_colors.dart';
 import 'package:visable_challenge/app/theme/visable_spacing.dart';
 import 'package:visable_challenge/app/theme/visable_typography.dart';
 import 'package:visable_challenge/app/utils/extension/context_extension.dart';
+import 'package:visable_challenge/features/movies/application/presentation/pages/movie_details_page.dart';
 import 'package:visable_challenge/features/movies/domain/entity/movie.dart';
 
 class SectionListViewCard extends StatelessWidget {
@@ -26,7 +28,10 @@ class SectionListViewCard extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              //TODO: add navigate to details
+              context.pushNamed(
+                MovieDetailsPage.routeName,
+                extra: movie,
+              );
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(VisableSpacing.s8),
