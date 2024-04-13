@@ -9,4 +9,5 @@ class VisableColors {
   static const transparent = Colors.transparent;
   static const primaryText = Color(0xffa9aaac);
   static const white = Colors.white;
+  static const gold = Colors.yellow;
 }

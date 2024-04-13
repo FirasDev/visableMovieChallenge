@@ -18,7 +18,6 @@ class SliderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
@@ -67,7 +66,7 @@ class SliderCard extends StatelessWidget {
                                 borderRadius:
                                     BorderRadius.circular(VisableSpacing.s6),
                                 color: indexDot == itemIndex
-                                    ? VisableColors.primary
+                                    ? VisableColors.white
                                     : VisableColors.inactiveColor,
                               ),
                             );

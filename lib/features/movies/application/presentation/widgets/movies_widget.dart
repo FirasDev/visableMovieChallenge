@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:visable_challenge/app/components/movies_slider.dart';
 import 'package:visable_challenge/app/components/section_header.dart';
+import 'package:visable_challenge/app/components/section_list_view.dart';
+import 'package:visable_challenge/app/components/section_list_view_card.dart';
 import 'package:visable_challenge/app/components/slider_card.dart';
 import 'package:visable_challenge/app/theme/visable_strings.dart';
 import 'package:visable_challenge/features/movies/domain/entity/movie.dart';
@@ -38,26 +40,26 @@ class MoviesWidget extends StatelessWidget {
               //TODO: add see all popular movies
             },
           ),
-          // SectionListView(
-          //   height: 250,
-          //   itemCount: popularMovies.length,
-          //   itemBuilder: (context, index) {
-          //     return SectionListViewCard(media: popularMovies[index]);
-          //   },
-          // ),
+          SectionListView(
+            height: 250,
+            itemCount: popularMovies.length,
+            itemBuilder: (context, index) {
+              return SectionListViewCard(movie: popularMovies[index]);
+            },
+          ),
           SectionHeader(
             title: VisableStrings.topRatedMovies,
             onSeeAllTap: () {
               //TODO: add see all top rated movies
             },
           ),
-          // SectionListView(
-          //   height: 250,
-          //   itemCount: topRatedMovies.length,
-          //   itemBuilder: (context, index) {
-          //     return SectionListViewCard(media: topRatedMovies[index]);
-          //   },
-          // ),
+          SectionListView(
+            height: 250,
+            itemCount: topRatedMovies.length,
+            itemBuilder: (context, index) {
+              return SectionListViewCard(movie: topRatedMovies[index]);
+            },
+          ),
         ],
       ),
     );
