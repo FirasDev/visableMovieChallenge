@@ -5,6 +5,7 @@ import 'package:visable_challenge/app/components/section_list_view.dart';
 import 'package:visable_challenge/app/components/section_list_view_card.dart';
 import 'package:visable_challenge/app/components/slider_card.dart';
 import 'package:visable_challenge/app/theme/visable_strings.dart';
+import 'package:visable_challenge/features/movies/application/presentation/widgets/search_widget.dart';
 import 'package:visable_challenge/features/movies/domain/entity/movie.dart';
 
 class MoviesWidget extends StatelessWidget {
@@ -34,6 +35,7 @@ class MoviesWidget extends StatelessWidget {
               );
             },
           ),
+          const SearchWidget(),
           SectionHeader(
             title: VisableStrings.popularMovies,
             onSeeAllTap: () {

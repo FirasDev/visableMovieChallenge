@@ -3,6 +3,7 @@ import 'package:visable_challenge/app/components/error_text.dart';
 import 'package:visable_challenge/app/theme/token/visable_colors.dart';
 import 'package:visable_challenge/app/theme/visable_spacing.dart';
 import 'package:visable_challenge/app/theme/visable_strings.dart';
+import 'package:visable_challenge/app/utils/extension/context_extension.dart';
 
 class ErrorScreen extends StatelessWidget {
   const ErrorScreen({
@@ -14,7 +15,6 @@ class ErrorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return SizedBox(
       width: double.infinity,
       child: Column(
@@ -32,7 +32,7 @@ class ErrorScreen extends StatelessWidget {
             ),
             child: Text(
               VisableStrings.tryAgainLater,
-              style: textTheme.bodyMedium,
+              style: context.typo.bodyMediumRegular,
             ),
           ),
         ],

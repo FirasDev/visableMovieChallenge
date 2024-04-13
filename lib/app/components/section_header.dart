@@ -19,7 +19,7 @@ class SectionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        vertical: VisableSpacing.s4,
+        vertical: VisableSpacing.s16,
         horizontal: VisableSpacing.s16,
       ),
       child: Row(
