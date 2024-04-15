@@ -24,4 +24,18 @@ class MoviesRepositoryImpl implements MoviesRepository {
       return const Left(NoDataFoundFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, List<Movie>>> searchMovie({
+    required String query,
+  }) async {
+    try {
+      final result = await moviesApi.searchMovie(
+        query: query,
+      );
+      return Right(result);
+    } on Exception catch (_) {
+      return const Left(NoDataFoundFailure());
+    }
+  }
 }

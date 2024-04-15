@@ -38,7 +38,7 @@ class Genre with _$Genre {
   }
 }
 
-final List<Genre> genresList = [
+const List<Genre> genresList = [
   Genre(id: 28, name: "Action"),
   Genre(id: 12, name: "Adventure"),
   Genre(id: 16, name: "Animation"),

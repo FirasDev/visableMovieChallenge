@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:visable_challenge/app/theme/token/visable_colors.dart';
 import 'package:visable_challenge/app/theme/visable_spacing.dart';
 import 'package:visable_challenge/app/theme/visable_strings.dart';
 import 'package:visable_challenge/app/theme/visable_typography.dart';
 import 'package:visable_challenge/app/utils/extension/context_extension.dart';
+import 'package:visable_challenge/features/movies/application/bloc/movies_bloc.dart';
 
 class SearchWidget extends StatefulWidget {
   const SearchWidget({
@@ -34,7 +36,9 @@ class _SearchFieldState extends State<SearchWidget> {
           cursorWidth: 1,
           style: context.typo.h3SmallSemiBold.white,
           onChanged: (title) {
-            //TODO: add bloc search event
+            context.read<MoviesBloc>().add(
+                  MoviesEvent.searchMovie(title),
+                );
           },
           decoration: InputDecoration(
             focusedBorder: OutlineInputBorder(
@@ -56,7 +60,9 @@ class _SearchFieldState extends State<SearchWidget> {
             suffixIcon: GestureDetector(
               onTap: () {
                 _textController.text = '';
-                //TODO: add bloc search event
+                context.read<MoviesBloc>().add(
+                      const MoviesEvent.searchMovie(''),
+                    );
               },
               child: const Icon(
                 Icons.clear_rounded,

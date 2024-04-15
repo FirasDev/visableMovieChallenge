@@ -52,14 +52,15 @@ class DetailsView extends StatelessWidget {
                                 size: VisableSpacing.s16,
                               ),
                               Text(
-                                '${movie.voteAverage.toStringAsFixed(1)}/10',
+                                '${movie.voteAverage?.toStringAsFixed(1)}/10',
                                 style: context.typo.bodyMediumRegular.white,
                               ),
                             ],
                           ),
-                          GenresWidget(
-                            genres: movie.genres,
-                          ),
+                          if (movie.genres != null)
+                            GenresWidget(
+                              genres: movie.genres!,
+                            ),
                         ],
                       ),
                     ),

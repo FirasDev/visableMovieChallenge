@@ -1,11 +1,14 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:visable_challenge/features/movies/domain/entity/movie.dart';
 import 'package:visable_challenge/features/movies/domain/repository/movies_repository.dart';
 import 'package:visable_challenge/features/movies/domain/usecases/get_movies_usecase.dart';
+import 'package:visable_challenge/features/movies/domain/usecases/search_movie_usecase.dart';
 
 part 'movies_bloc.freezed.dart';
 part 'movies_event.dart';
@@ -14,20 +17,23 @@ part 'movies_state.dart';
 @injectable
 class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   MoviesBloc(
-    this.getMoviesUseCase,
     this.moviesRepository,
+    this.getMoviesUseCase,
+    this.searchMovieUseCase,
   ) : super(
           const MoviesState(),
         ) {
     on<_LoadMovies>(_onLoadMovies);
-    on<_MovieClicked>(_onMovieClicked);
-    on<_MovieTypeFilter>(_onMovieTypeFilter);
     on<_MovieGenreFilter>(_onMovieGenreFilter);
-    on<_ActorFilter>(_onActorFilter);
+    on<_SearchMovie>(_onSearchMovie,
+        transformer: debounceRestartable(const Duration(
+          milliseconds: 200,
+        )));
   }
 
-  final GetMoviesUseCase getMoviesUseCase;
   final MoviesRepository moviesRepository;
+  final GetMoviesUseCase getMoviesUseCase;
+  final SearchMovieUseCase searchMovieUseCase;
 
   FutureOr<void> _onLoadMovies(
     _LoadMovies event,
@@ -46,23 +52,37 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
             )));
   }
 
-  FutureOr<void> _onMovieClicked(
-    _MovieClicked event,
-    Emitter<MoviesState> emit,
-  ) {}
-
-  FutureOr<void> _onMovieTypeFilter(
-    _MovieTypeFilter event,
-    Emitter<MoviesState> emit,
-  ) {}
-
   FutureOr<void> _onMovieGenreFilter(
     _MovieGenreFilter event,
     Emitter<MoviesState> emit,
   ) {}
 
-  FutureOr<void> _onActorFilter(
-    _ActorFilter event,
+  FutureOr<void> _onSearchMovie(
+    _SearchMovie event,
     Emitter<MoviesState> emit,
-  ) {}
+  ) async {
+    if (event.query.trim().isEmpty) {
+      emit(
+        state.copyWith(movieResults: []),
+      );
+    }
+
+    final result = await searchMovieUseCase(event.query);
+    result.fold(
+        (failure) => state.copyWith(
+              status: MoviesStateStatus.error,
+            ),
+        (success) => emit(state.copyWith(
+              movieResults: success,
+            )));
+  }
+
+  EventTransformer<MoviesEvent> debounceRestartable<MoviesEvent>(
+    Duration duration,
+  ) {
+    return (events, mapper) => restartable<MoviesEvent>().call(
+          events.debounceTime(duration),
+          mapper,
+        );
+  }
 }

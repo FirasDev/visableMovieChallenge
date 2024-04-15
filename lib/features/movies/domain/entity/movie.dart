@@ -9,20 +9,20 @@ class Movie with _$Movie {
   const factory Movie({
     required int id,
     required String title,
-    @JsonKey(name: 'backdrop_path') required String backdropPath,
+    @JsonKey(name: 'backdrop_path') String? backdropPath,
     @JsonKey(
       name: 'genre_ids',
       fromJson: Genre.convertGenreIdsToGenreList,
-      toJson: Genre.convertGenreListToGenreIds,
+      includeToJson: false,
     )
-    required List<Genre> genres,
-    @JsonKey(name: 'original_language') required String originalLanguage,
-    @JsonKey(name: 'original_title') required String originalTitle,
+    List<Genre>? genres,
+    @JsonKey(name: 'original_language') String? originalLanguage,
+    @JsonKey(name: 'original_title') String? originalTitle,
     required String overview,
     required double popularity,
-    @JsonKey(name: 'poster_path') required String posterPath,
-    @JsonKey(name: 'release_date') required String releaseDate,
-    @JsonKey(name: 'vote_average') required double voteAverage,
+    @JsonKey(name: 'poster_path') String? posterPath,
+    @JsonKey(name: 'release_date') String? releaseDate,
+    @JsonKey(name: 'vote_average') double? voteAverage,
   }) = _Movie;
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);

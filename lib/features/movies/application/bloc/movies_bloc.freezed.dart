@@ -19,56 +19,44 @@ mixin _$MoviesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Movie> movies) loadMovies,
-    required TResult Function(int movieId) movieClicked,
-    required TResult Function(String movieListType) movieTypeFilter,
     required TResult Function(int movieGenreId) movieGenreFilter,
-    required TResult Function(int castId) actorFilter,
+    required TResult Function(String query) searchMovie,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Movie> movies)? loadMovies,
-    TResult? Function(int movieId)? movieClicked,
-    TResult? Function(String movieListType)? movieTypeFilter,
     TResult? Function(int movieGenreId)? movieGenreFilter,
-    TResult? Function(int castId)? actorFilter,
+    TResult? Function(String query)? searchMovie,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Movie> movies)? loadMovies,
-    TResult Function(int movieId)? movieClicked,
-    TResult Function(String movieListType)? movieTypeFilter,
     TResult Function(int movieGenreId)? movieGenreFilter,
-    TResult Function(int castId)? actorFilter,
+    TResult Function(String query)? searchMovie,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadMovies value) loadMovies,
-    required TResult Function(_MovieClicked value) movieClicked,
-    required TResult Function(_MovieTypeFilter value) movieTypeFilter,
     required TResult Function(_MovieGenreFilter value) movieGenreFilter,
-    required TResult Function(_ActorFilter value) actorFilter,
+    required TResult Function(_SearchMovie value) searchMovie,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadMovies value)? loadMovies,
-    TResult? Function(_MovieClicked value)? movieClicked,
-    TResult? Function(_MovieTypeFilter value)? movieTypeFilter,
     TResult? Function(_MovieGenreFilter value)? movieGenreFilter,
-    TResult? Function(_ActorFilter value)? actorFilter,
+    TResult? Function(_SearchMovie value)? searchMovie,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadMovies value)? loadMovies,
-    TResult Function(_MovieClicked value)? movieClicked,
-    TResult Function(_MovieTypeFilter value)? movieTypeFilter,
     TResult Function(_MovieGenreFilter value)? movieGenreFilter,
-    TResult Function(_ActorFilter value)? actorFilter,
+    TResult Function(_SearchMovie value)? searchMovie,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -164,10 +152,8 @@ class _$LoadMoviesImpl implements _LoadMovies {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Movie> movies) loadMovies,
-    required TResult Function(int movieId) movieClicked,
-    required TResult Function(String movieListType) movieTypeFilter,
     required TResult Function(int movieGenreId) movieGenreFilter,
-    required TResult Function(int castId) actorFilter,
+    required TResult Function(String query) searchMovie,
   }) {
     return loadMovies(movies);
   }
@@ -176,10 +162,8 @@ class _$LoadMoviesImpl implements _LoadMovies {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Movie> movies)? loadMovies,
-    TResult? Function(int movieId)? movieClicked,
-    TResult? Function(String movieListType)? movieTypeFilter,
     TResult? Function(int movieGenreId)? movieGenreFilter,
-    TResult? Function(int castId)? actorFilter,
+    TResult? Function(String query)? searchMovie,
   }) {
     return loadMovies?.call(movies);
   }
@@ -188,10 +172,8 @@ class _$LoadMoviesImpl implements _LoadMovies {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Movie> movies)? loadMovies,
-    TResult Function(int movieId)? movieClicked,
-    TResult Function(String movieListType)? movieTypeFilter,
     TResult Function(int movieGenreId)? movieGenreFilter,
-    TResult Function(int castId)? actorFilter,
+    TResult Function(String query)? searchMovie,
     required TResult orElse(),
   }) {
     if (loadMovies != null) {
@@ -204,10 +186,8 @@ class _$LoadMoviesImpl implements _LoadMovies {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadMovies value) loadMovies,
-    required TResult Function(_MovieClicked value) movieClicked,
-    required TResult Function(_MovieTypeFilter value) movieTypeFilter,
     required TResult Function(_MovieGenreFilter value) movieGenreFilter,
-    required TResult Function(_ActorFilter value) actorFilter,
+    required TResult Function(_SearchMovie value) searchMovie,
   }) {
     return loadMovies(this);
   }
@@ -216,10 +196,8 @@ class _$LoadMoviesImpl implements _LoadMovies {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadMovies value)? loadMovies,
-    TResult? Function(_MovieClicked value)? movieClicked,
-    TResult? Function(_MovieTypeFilter value)? movieTypeFilter,
     TResult? Function(_MovieGenreFilter value)? movieGenreFilter,
-    TResult? Function(_ActorFilter value)? actorFilter,
+    TResult? Function(_SearchMovie value)? searchMovie,
   }) {
     return loadMovies?.call(this);
   }
@@ -228,10 +206,8 @@ class _$LoadMoviesImpl implements _LoadMovies {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadMovies value)? loadMovies,
-    TResult Function(_MovieClicked value)? movieClicked,
-    TResult Function(_MovieTypeFilter value)? movieTypeFilter,
     TResult Function(_MovieGenreFilter value)? movieGenreFilter,
-    TResult Function(_ActorFilter value)? actorFilter,
+    TResult Function(_SearchMovie value)? searchMovie,
     required TResult orElse(),
   }) {
     if (loadMovies != null) {
@@ -248,311 +224,6 @@ abstract class _LoadMovies implements MoviesEvent {
   List<Movie> get movies;
   @JsonKey(ignore: true)
   _$$LoadMoviesImplCopyWith<_$LoadMoviesImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$MovieClickedImplCopyWith<$Res> {
-  factory _$$MovieClickedImplCopyWith(
-          _$MovieClickedImpl value, $Res Function(_$MovieClickedImpl) then) =
-      __$$MovieClickedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int movieId});
-}
-
-/// @nodoc
-class __$$MovieClickedImplCopyWithImpl<$Res>
-    extends _$MoviesEventCopyWithImpl<$Res, _$MovieClickedImpl>
-    implements _$$MovieClickedImplCopyWith<$Res> {
-  __$$MovieClickedImplCopyWithImpl(
-      _$MovieClickedImpl _value, $Res Function(_$MovieClickedImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? movieId = null,
-  }) {
-    return _then(_$MovieClickedImpl(
-      null == movieId
-          ? _value.movieId
-          : movieId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$MovieClickedImpl implements _MovieClicked {
-  const _$MovieClickedImpl(this.movieId);
-
-  @override
-  final int movieId;
-
-  @override
-  String toString() {
-    return 'MoviesEvent.movieClicked(movieId: $movieId)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MovieClickedImpl &&
-            (identical(other.movieId, movieId) || other.movieId == movieId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, movieId);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MovieClickedImplCopyWith<_$MovieClickedImpl> get copyWith =>
-      __$$MovieClickedImplCopyWithImpl<_$MovieClickedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<Movie> movies) loadMovies,
-    required TResult Function(int movieId) movieClicked,
-    required TResult Function(String movieListType) movieTypeFilter,
-    required TResult Function(int movieGenreId) movieGenreFilter,
-    required TResult Function(int castId) actorFilter,
-  }) {
-    return movieClicked(movieId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Movie> movies)? loadMovies,
-    TResult? Function(int movieId)? movieClicked,
-    TResult? Function(String movieListType)? movieTypeFilter,
-    TResult? Function(int movieGenreId)? movieGenreFilter,
-    TResult? Function(int castId)? actorFilter,
-  }) {
-    return movieClicked?.call(movieId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Movie> movies)? loadMovies,
-    TResult Function(int movieId)? movieClicked,
-    TResult Function(String movieListType)? movieTypeFilter,
-    TResult Function(int movieGenreId)? movieGenreFilter,
-    TResult Function(int castId)? actorFilter,
-    required TResult orElse(),
-  }) {
-    if (movieClicked != null) {
-      return movieClicked(movieId);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoadMovies value) loadMovies,
-    required TResult Function(_MovieClicked value) movieClicked,
-    required TResult Function(_MovieTypeFilter value) movieTypeFilter,
-    required TResult Function(_MovieGenreFilter value) movieGenreFilter,
-    required TResult Function(_ActorFilter value) actorFilter,
-  }) {
-    return movieClicked(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadMovies value)? loadMovies,
-    TResult? Function(_MovieClicked value)? movieClicked,
-    TResult? Function(_MovieTypeFilter value)? movieTypeFilter,
-    TResult? Function(_MovieGenreFilter value)? movieGenreFilter,
-    TResult? Function(_ActorFilter value)? actorFilter,
-  }) {
-    return movieClicked?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadMovies value)? loadMovies,
-    TResult Function(_MovieClicked value)? movieClicked,
-    TResult Function(_MovieTypeFilter value)? movieTypeFilter,
-    TResult Function(_MovieGenreFilter value)? movieGenreFilter,
-    TResult Function(_ActorFilter value)? actorFilter,
-    required TResult orElse(),
-  }) {
-    if (movieClicked != null) {
-      return movieClicked(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _MovieClicked implements MoviesEvent {
-  const factory _MovieClicked(final int movieId) = _$MovieClickedImpl;
-
-  int get movieId;
-  @JsonKey(ignore: true)
-  _$$MovieClickedImplCopyWith<_$MovieClickedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$MovieTypeFilterImplCopyWith<$Res> {
-  factory _$$MovieTypeFilterImplCopyWith(_$MovieTypeFilterImpl value,
-          $Res Function(_$MovieTypeFilterImpl) then) =
-      __$$MovieTypeFilterImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String movieListType});
-}
-
-/// @nodoc
-class __$$MovieTypeFilterImplCopyWithImpl<$Res>
-    extends _$MoviesEventCopyWithImpl<$Res, _$MovieTypeFilterImpl>
-    implements _$$MovieTypeFilterImplCopyWith<$Res> {
-  __$$MovieTypeFilterImplCopyWithImpl(
-      _$MovieTypeFilterImpl _value, $Res Function(_$MovieTypeFilterImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? movieListType = null,
-  }) {
-    return _then(_$MovieTypeFilterImpl(
-      null == movieListType
-          ? _value.movieListType
-          : movieListType // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$MovieTypeFilterImpl implements _MovieTypeFilter {
-  const _$MovieTypeFilterImpl(this.movieListType);
-
-  @override
-  final String movieListType;
-
-  @override
-  String toString() {
-    return 'MoviesEvent.movieTypeFilter(movieListType: $movieListType)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MovieTypeFilterImpl &&
-            (identical(other.movieListType, movieListType) ||
-                other.movieListType == movieListType));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, movieListType);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MovieTypeFilterImplCopyWith<_$MovieTypeFilterImpl> get copyWith =>
-      __$$MovieTypeFilterImplCopyWithImpl<_$MovieTypeFilterImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<Movie> movies) loadMovies,
-    required TResult Function(int movieId) movieClicked,
-    required TResult Function(String movieListType) movieTypeFilter,
-    required TResult Function(int movieGenreId) movieGenreFilter,
-    required TResult Function(int castId) actorFilter,
-  }) {
-    return movieTypeFilter(movieListType);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Movie> movies)? loadMovies,
-    TResult? Function(int movieId)? movieClicked,
-    TResult? Function(String movieListType)? movieTypeFilter,
-    TResult? Function(int movieGenreId)? movieGenreFilter,
-    TResult? Function(int castId)? actorFilter,
-  }) {
-    return movieTypeFilter?.call(movieListType);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Movie> movies)? loadMovies,
-    TResult Function(int movieId)? movieClicked,
-    TResult Function(String movieListType)? movieTypeFilter,
-    TResult Function(int movieGenreId)? movieGenreFilter,
-    TResult Function(int castId)? actorFilter,
-    required TResult orElse(),
-  }) {
-    if (movieTypeFilter != null) {
-      return movieTypeFilter(movieListType);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoadMovies value) loadMovies,
-    required TResult Function(_MovieClicked value) movieClicked,
-    required TResult Function(_MovieTypeFilter value) movieTypeFilter,
-    required TResult Function(_MovieGenreFilter value) movieGenreFilter,
-    required TResult Function(_ActorFilter value) actorFilter,
-  }) {
-    return movieTypeFilter(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadMovies value)? loadMovies,
-    TResult? Function(_MovieClicked value)? movieClicked,
-    TResult? Function(_MovieTypeFilter value)? movieTypeFilter,
-    TResult? Function(_MovieGenreFilter value)? movieGenreFilter,
-    TResult? Function(_ActorFilter value)? actorFilter,
-  }) {
-    return movieTypeFilter?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadMovies value)? loadMovies,
-    TResult Function(_MovieClicked value)? movieClicked,
-    TResult Function(_MovieTypeFilter value)? movieTypeFilter,
-    TResult Function(_MovieGenreFilter value)? movieGenreFilter,
-    TResult Function(_ActorFilter value)? actorFilter,
-    required TResult orElse(),
-  }) {
-    if (movieTypeFilter != null) {
-      return movieTypeFilter(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _MovieTypeFilter implements MoviesEvent {
-  const factory _MovieTypeFilter(final String movieListType) =
-      _$MovieTypeFilterImpl;
-
-  String get movieListType;
-  @JsonKey(ignore: true)
-  _$$MovieTypeFilterImplCopyWith<_$MovieTypeFilterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -623,10 +294,8 @@ class _$MovieGenreFilterImpl implements _MovieGenreFilter {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Movie> movies) loadMovies,
-    required TResult Function(int movieId) movieClicked,
-    required TResult Function(String movieListType) movieTypeFilter,
     required TResult Function(int movieGenreId) movieGenreFilter,
-    required TResult Function(int castId) actorFilter,
+    required TResult Function(String query) searchMovie,
   }) {
     return movieGenreFilter(movieGenreId);
   }
@@ -635,10 +304,8 @@ class _$MovieGenreFilterImpl implements _MovieGenreFilter {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Movie> movies)? loadMovies,
-    TResult? Function(int movieId)? movieClicked,
-    TResult? Function(String movieListType)? movieTypeFilter,
     TResult? Function(int movieGenreId)? movieGenreFilter,
-    TResult? Function(int castId)? actorFilter,
+    TResult? Function(String query)? searchMovie,
   }) {
     return movieGenreFilter?.call(movieGenreId);
   }
@@ -647,10 +314,8 @@ class _$MovieGenreFilterImpl implements _MovieGenreFilter {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Movie> movies)? loadMovies,
-    TResult Function(int movieId)? movieClicked,
-    TResult Function(String movieListType)? movieTypeFilter,
     TResult Function(int movieGenreId)? movieGenreFilter,
-    TResult Function(int castId)? actorFilter,
+    TResult Function(String query)? searchMovie,
     required TResult orElse(),
   }) {
     if (movieGenreFilter != null) {
@@ -663,10 +328,8 @@ class _$MovieGenreFilterImpl implements _MovieGenreFilter {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadMovies value) loadMovies,
-    required TResult Function(_MovieClicked value) movieClicked,
-    required TResult Function(_MovieTypeFilter value) movieTypeFilter,
     required TResult Function(_MovieGenreFilter value) movieGenreFilter,
-    required TResult Function(_ActorFilter value) actorFilter,
+    required TResult Function(_SearchMovie value) searchMovie,
   }) {
     return movieGenreFilter(this);
   }
@@ -675,10 +338,8 @@ class _$MovieGenreFilterImpl implements _MovieGenreFilter {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadMovies value)? loadMovies,
-    TResult? Function(_MovieClicked value)? movieClicked,
-    TResult? Function(_MovieTypeFilter value)? movieTypeFilter,
     TResult? Function(_MovieGenreFilter value)? movieGenreFilter,
-    TResult? Function(_ActorFilter value)? actorFilter,
+    TResult? Function(_SearchMovie value)? searchMovie,
   }) {
     return movieGenreFilter?.call(this);
   }
@@ -687,10 +348,8 @@ class _$MovieGenreFilterImpl implements _MovieGenreFilter {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadMovies value)? loadMovies,
-    TResult Function(_MovieClicked value)? movieClicked,
-    TResult Function(_MovieTypeFilter value)? movieTypeFilter,
     TResult Function(_MovieGenreFilter value)? movieGenreFilter,
-    TResult Function(_ActorFilter value)? actorFilter,
+    TResult Function(_SearchMovie value)? searchMovie,
     required TResult orElse(),
   }) {
     if (movieGenreFilter != null) {
@@ -711,102 +370,96 @@ abstract class _MovieGenreFilter implements MoviesEvent {
 }
 
 /// @nodoc
-abstract class _$$ActorFilterImplCopyWith<$Res> {
-  factory _$$ActorFilterImplCopyWith(
-          _$ActorFilterImpl value, $Res Function(_$ActorFilterImpl) then) =
-      __$$ActorFilterImplCopyWithImpl<$Res>;
+abstract class _$$SearchMovieImplCopyWith<$Res> {
+  factory _$$SearchMovieImplCopyWith(
+          _$SearchMovieImpl value, $Res Function(_$SearchMovieImpl) then) =
+      __$$SearchMovieImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int castId});
+  $Res call({String query});
 }
 
 /// @nodoc
-class __$$ActorFilterImplCopyWithImpl<$Res>
-    extends _$MoviesEventCopyWithImpl<$Res, _$ActorFilterImpl>
-    implements _$$ActorFilterImplCopyWith<$Res> {
-  __$$ActorFilterImplCopyWithImpl(
-      _$ActorFilterImpl _value, $Res Function(_$ActorFilterImpl) _then)
+class __$$SearchMovieImplCopyWithImpl<$Res>
+    extends _$MoviesEventCopyWithImpl<$Res, _$SearchMovieImpl>
+    implements _$$SearchMovieImplCopyWith<$Res> {
+  __$$SearchMovieImplCopyWithImpl(
+      _$SearchMovieImpl _value, $Res Function(_$SearchMovieImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? castId = null,
+    Object? query = null,
   }) {
-    return _then(_$ActorFilterImpl(
-      null == castId
-          ? _value.castId
-          : castId // ignore: cast_nullable_to_non_nullable
-              as int,
+    return _then(_$SearchMovieImpl(
+      null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ActorFilterImpl implements _ActorFilter {
-  const _$ActorFilterImpl(this.castId);
+class _$SearchMovieImpl implements _SearchMovie {
+  const _$SearchMovieImpl(this.query);
 
   @override
-  final int castId;
+  final String query;
 
   @override
   String toString() {
-    return 'MoviesEvent.actorFilter(castId: $castId)';
+    return 'MoviesEvent.searchMovie(query: $query)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ActorFilterImpl &&
-            (identical(other.castId, castId) || other.castId == castId));
+            other is _$SearchMovieImpl &&
+            (identical(other.query, query) || other.query == query));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, castId);
+  int get hashCode => Object.hash(runtimeType, query);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ActorFilterImplCopyWith<_$ActorFilterImpl> get copyWith =>
-      __$$ActorFilterImplCopyWithImpl<_$ActorFilterImpl>(this, _$identity);
+  _$$SearchMovieImplCopyWith<_$SearchMovieImpl> get copyWith =>
+      __$$SearchMovieImplCopyWithImpl<_$SearchMovieImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Movie> movies) loadMovies,
-    required TResult Function(int movieId) movieClicked,
-    required TResult Function(String movieListType) movieTypeFilter,
     required TResult Function(int movieGenreId) movieGenreFilter,
-    required TResult Function(int castId) actorFilter,
+    required TResult Function(String query) searchMovie,
   }) {
-    return actorFilter(castId);
+    return searchMovie(query);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Movie> movies)? loadMovies,
-    TResult? Function(int movieId)? movieClicked,
-    TResult? Function(String movieListType)? movieTypeFilter,
     TResult? Function(int movieGenreId)? movieGenreFilter,
-    TResult? Function(int castId)? actorFilter,
+    TResult? Function(String query)? searchMovie,
   }) {
-    return actorFilter?.call(castId);
+    return searchMovie?.call(query);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Movie> movies)? loadMovies,
-    TResult Function(int movieId)? movieClicked,
-    TResult Function(String movieListType)? movieTypeFilter,
     TResult Function(int movieGenreId)? movieGenreFilter,
-    TResult Function(int castId)? actorFilter,
+    TResult Function(String query)? searchMovie,
     required TResult orElse(),
   }) {
-    if (actorFilter != null) {
-      return actorFilter(castId);
+    if (searchMovie != null) {
+      return searchMovie(query);
     }
     return orElse();
   }
@@ -815,49 +468,43 @@ class _$ActorFilterImpl implements _ActorFilter {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadMovies value) loadMovies,
-    required TResult Function(_MovieClicked value) movieClicked,
-    required TResult Function(_MovieTypeFilter value) movieTypeFilter,
     required TResult Function(_MovieGenreFilter value) movieGenreFilter,
-    required TResult Function(_ActorFilter value) actorFilter,
+    required TResult Function(_SearchMovie value) searchMovie,
   }) {
-    return actorFilter(this);
+    return searchMovie(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadMovies value)? loadMovies,
-    TResult? Function(_MovieClicked value)? movieClicked,
-    TResult? Function(_MovieTypeFilter value)? movieTypeFilter,
     TResult? Function(_MovieGenreFilter value)? movieGenreFilter,
-    TResult? Function(_ActorFilter value)? actorFilter,
+    TResult? Function(_SearchMovie value)? searchMovie,
   }) {
-    return actorFilter?.call(this);
+    return searchMovie?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadMovies value)? loadMovies,
-    TResult Function(_MovieClicked value)? movieClicked,
-    TResult Function(_MovieTypeFilter value)? movieTypeFilter,
     TResult Function(_MovieGenreFilter value)? movieGenreFilter,
-    TResult Function(_ActorFilter value)? actorFilter,
+    TResult Function(_SearchMovie value)? searchMovie,
     required TResult orElse(),
   }) {
-    if (actorFilter != null) {
-      return actorFilter(this);
+    if (searchMovie != null) {
+      return searchMovie(this);
     }
     return orElse();
   }
 }
 
-abstract class _ActorFilter implements MoviesEvent {
-  const factory _ActorFilter(final int castId) = _$ActorFilterImpl;
+abstract class _SearchMovie implements MoviesEvent {
+  const factory _SearchMovie(final String query) = _$SearchMovieImpl;
 
-  int get castId;
+  String get query;
   @JsonKey(ignore: true)
-  _$$ActorFilterImplCopyWith<_$ActorFilterImpl> get copyWith =>
+  _$$SearchMovieImplCopyWith<_$SearchMovieImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -866,6 +513,7 @@ mixin _$MoviesState {
   List<Movie> get popularMovies => throw _privateConstructorUsedError;
   List<Movie> get trendingMovies => throw _privateConstructorUsedError;
   List<Movie> get upcomingMovies => throw _privateConstructorUsedError;
+  List<Movie> get movieResults => throw _privateConstructorUsedError;
   MoviesStateStatus get status => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -883,6 +531,7 @@ abstract class $MoviesStateCopyWith<$Res> {
       {List<Movie> popularMovies,
       List<Movie> trendingMovies,
       List<Movie> upcomingMovies,
+      List<Movie> movieResults,
       MoviesStateStatus status});
 }
 
@@ -902,6 +551,7 @@ class _$MoviesStateCopyWithImpl<$Res, $Val extends MoviesState>
     Object? popularMovies = null,
     Object? trendingMovies = null,
     Object? upcomingMovies = null,
+    Object? movieResults = null,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
@@ -916,6 +566,10 @@ class _$MoviesStateCopyWithImpl<$Res, $Val extends MoviesState>
       upcomingMovies: null == upcomingMovies
           ? _value.upcomingMovies
           : upcomingMovies // ignore: cast_nullable_to_non_nullable
+              as List<Movie>,
+      movieResults: null == movieResults
+          ? _value.movieResults
+          : movieResults // ignore: cast_nullable_to_non_nullable
               as List<Movie>,
       status: null == status
           ? _value.status
@@ -937,6 +591,7 @@ abstract class _$$MoviesStateImplCopyWith<$Res>
       {List<Movie> popularMovies,
       List<Movie> trendingMovies,
       List<Movie> upcomingMovies,
+      List<Movie> movieResults,
       MoviesStateStatus status});
 }
 
@@ -954,6 +609,7 @@ class __$$MoviesStateImplCopyWithImpl<$Res>
     Object? popularMovies = null,
     Object? trendingMovies = null,
     Object? upcomingMovies = null,
+    Object? movieResults = null,
     Object? status = null,
   }) {
     return _then(_$MoviesStateImpl(
@@ -968,6 +624,10 @@ class __$$MoviesStateImplCopyWithImpl<$Res>
       upcomingMovies: null == upcomingMovies
           ? _value._upcomingMovies
           : upcomingMovies // ignore: cast_nullable_to_non_nullable
+              as List<Movie>,
+      movieResults: null == movieResults
+          ? _value._movieResults
+          : movieResults // ignore: cast_nullable_to_non_nullable
               as List<Movie>,
       status: null == status
           ? _value.status
@@ -984,10 +644,12 @@ class _$MoviesStateImpl implements _MoviesState {
       {final List<Movie> popularMovies = const [],
       final List<Movie> trendingMovies = const [],
       final List<Movie> upcomingMovies = const [],
+      final List<Movie> movieResults = const [],
       this.status = MoviesStateStatus.loading})
       : _popularMovies = popularMovies,
         _trendingMovies = trendingMovies,
-        _upcomingMovies = upcomingMovies;
+        _upcomingMovies = upcomingMovies,
+        _movieResults = movieResults;
 
   final List<Movie> _popularMovies;
   @override
@@ -1016,13 +678,22 @@ class _$MoviesStateImpl implements _MoviesState {
     return EqualUnmodifiableListView(_upcomingMovies);
   }
 
+  final List<Movie> _movieResults;
+  @override
+  @JsonKey()
+  List<Movie> get movieResults {
+    if (_movieResults is EqualUnmodifiableListView) return _movieResults;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_movieResults);
+  }
+
   @override
   @JsonKey()
   final MoviesStateStatus status;
 
   @override
   String toString() {
-    return 'MoviesState(popularMovies: $popularMovies, trendingMovies: $trendingMovies, upcomingMovies: $upcomingMovies, status: $status)';
+    return 'MoviesState(popularMovies: $popularMovies, trendingMovies: $trendingMovies, upcomingMovies: $upcomingMovies, movieResults: $movieResults, status: $status)';
   }
 
   @override
@@ -1036,6 +707,8 @@ class _$MoviesStateImpl implements _MoviesState {
                 .equals(other._trendingMovies, _trendingMovies) &&
             const DeepCollectionEquality()
                 .equals(other._upcomingMovies, _upcomingMovies) &&
+            const DeepCollectionEquality()
+                .equals(other._movieResults, _movieResults) &&
             (identical(other.status, status) || other.status == status));
   }
 
@@ -1045,6 +718,7 @@ class _$MoviesStateImpl implements _MoviesState {
       const DeepCollectionEquality().hash(_popularMovies),
       const DeepCollectionEquality().hash(_trendingMovies),
       const DeepCollectionEquality().hash(_upcomingMovies),
+      const DeepCollectionEquality().hash(_movieResults),
       status);
 
   @JsonKey(ignore: true)
@@ -1059,6 +733,7 @@ abstract class _MoviesState implements MoviesState {
       {final List<Movie> popularMovies,
       final List<Movie> trendingMovies,
       final List<Movie> upcomingMovies,
+      final List<Movie> movieResults,
       final MoviesStateStatus status}) = _$MoviesStateImpl;
 
   @override
@@ -1067,6 +742,8 @@ abstract class _MoviesState implements MoviesState {
   List<Movie> get trendingMovies;
   @override
   List<Movie> get upcomingMovies;
+  @override
+  List<Movie> get movieResults;
   @override
   MoviesStateStatus get status;
   @override

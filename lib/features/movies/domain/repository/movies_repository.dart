@@ -6,4 +6,7 @@ abstract class MoviesRepository {
   Future<Either<Failure, List<Movie>>> getMoviesListType({
     required String listType,
   });
+  Future<Either<Failure, List<Movie>>> searchMovie({
+    required String query,
+  });
 }

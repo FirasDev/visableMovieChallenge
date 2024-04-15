@@ -12,6 +12,7 @@ abstract class MoviesState with _$MoviesState {
     @Default([]) List<Movie> popularMovies,
     @Default([]) List<Movie> trendingMovies,
     @Default([]) List<Movie> upcomingMovies,
+    @Default([]) List<Movie> movieResults,
     @Default(MoviesStateStatus.loading) MoviesStateStatus status,
   }) = _MoviesState;
 }

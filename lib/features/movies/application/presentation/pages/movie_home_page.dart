@@ -31,6 +31,9 @@ class MovieHomePage extends StatelessWidget {
           create: (context) => getIt<MoviesBloc>()
             ..add(const MoviesEvent.loadMovies(movies: [])),
           child: BlocBuilder<MoviesBloc, MoviesState>(
+            buildWhen: (previous, current) =>
+                previous.movieResults != current.movieResults ||
+                previous.status != current.status,
             builder: (context, state) {
               return switch (state.status) {
                 MoviesStateStatus.loading => const LoadingIndicator(),
@@ -45,6 +48,7 @@ class MovieHomePage extends StatelessWidget {
                     popularMovies: state.popularMovies,
                     topRatedMovies: state.trendingMovies,
                     upcomingMovies: state.upcomingMovies,
+                    searchResult: state.movieResults,
                   ),
               };
             },

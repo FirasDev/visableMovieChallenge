@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:visable_challenge/app/components/image_with_shimmer.dart';
 import 'package:visable_challenge/app/helper/tmdb_config.dart';
+import 'package:visable_challenge/app/helper/visable_constants.dart';
 import 'package:visable_challenge/app/theme/token/visable_colors.dart';
+import 'package:visable_challenge/app/utils/extension/context_extension.dart';
 
 class SliderCardImage extends StatelessWidget {
   const SliderCardImage({
@@ -9,11 +11,13 @@ class SliderCardImage extends StatelessWidget {
     required this.imageUrl,
   });
 
-  final String imageUrl;
+  final String? imageUrl;
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final url = imageUrl != null
+        ? '${TmdbConfig.tmdbImagePath}$imageUrl'
+        : VisableConstants.imageNotFoundUrl;
     return ShaderMask(
       blendMode: BlendMode.dstIn,
       shaderCallback: (rect) {
@@ -31,9 +35,9 @@ class SliderCardImage extends StatelessWidget {
         );
       },
       child: ImageWithShimmer(
-        height: size.height * 0.6,
+        height: context.screenHeight * 0.6,
         width: double.infinity,
-        imageUrl: '${TmdbConfig.tmdbImagePath}$imageUrl',
+        imageUrl: url,
       ),
     );
   }

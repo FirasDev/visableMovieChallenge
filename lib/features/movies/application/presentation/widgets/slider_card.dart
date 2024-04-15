@@ -31,7 +31,9 @@ class SliderCard extends StatelessWidget {
       child: SafeArea(
         child: Stack(
           children: [
-            SliderCardImage(imageUrl: movie.backdropPath),
+            SliderCardImage(
+              imageUrl: movie.backdropPath ?? movie.posterPath,
+            ),
             Padding(
               padding: const EdgeInsets.only(
                 right: VisableSpacing.s16,
@@ -50,7 +52,7 @@ class SliderCard extends StatelessWidget {
                       style: context.typo.h1LargeSemiBold.white,
                     ),
                     Text(
-                      movie.releaseDate,
+                      movie.releaseDate ?? '',
                       style: context.typo.bodyMediumRegular.white,
                     ),
                     Padding(
