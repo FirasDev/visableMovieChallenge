@@ -18,7 +18,7 @@ class GetMoviesUseCase extends NoParamsUseCase<MovieResponseParams> {
     final movieListResult = await Future.wait([
       for (final listType in MovieListType.values)
         moviesRepository.getMoviesListType(
-          listType.backendIdentifier,
+          listType: listType.backendIdentifier,
         ),
     ]);
     if (movieListResult.every((movies) => movies.isRight())) {

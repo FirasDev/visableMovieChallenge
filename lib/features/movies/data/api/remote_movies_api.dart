@@ -13,9 +13,9 @@ class RemoteMoviesApi implements MoviesApi {
   //* Get a list of movies depending on listType parameter
   //* listType parameter can be popular, trending or upcoming
   @override
-  Future<List<Movie>> getMoviesListType(
-    String listType,
-  ) async {
+  Future<List<Movie>> getMoviesListType({
+    required String listType,
+  }) async {
     final getMovieListTypeUrl = '/movie/$listType';
     final params = {
       'api_key': TmdbConfig.tmdbApiKey,

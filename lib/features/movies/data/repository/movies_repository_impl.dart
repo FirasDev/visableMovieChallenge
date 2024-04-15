@@ -12,12 +12,16 @@ class MoviesRepositoryImpl implements MoviesRepository {
   final MoviesApi moviesApi;
 
   @override
-  Future<Either<Failure, List<Movie>>> getMoviesListType(
-      String listType) async {
+  Future<Either<Failure, List<Movie>>> getMoviesListType({
+    required String listType,
+  }) async {
     try {
-      return Right(await moviesApi.getMoviesListType(listType));
-    } on Exception catch (e) {
-      return Left(NoDataFoundFailure(message: e.toString()));
+      final result = await moviesApi.getMoviesListType(
+        listType: listType,
+      );
+      return Right(result);
+    } on Exception catch (_) {
+      return const Left(NoDataFoundFailure());
     }
   }
 }

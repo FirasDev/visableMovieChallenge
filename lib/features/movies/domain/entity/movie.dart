@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:visable_challenge/features/movies/domain/entity/genre.dart';
 
 part 'movie.freezed.dart';
 part 'movie.g.dart';
@@ -9,7 +10,12 @@ class Movie with _$Movie {
     required int id,
     required String title,
     @JsonKey(name: 'backdrop_path') required String backdropPath,
-    @JsonKey(name: 'genre_ids') required List<int> genreIds,
+    @JsonKey(
+      name: 'genre_ids',
+      fromJson: Genre.convertGenreIdsToGenreList,
+      toJson: Genre.convertGenreListToGenreIds,
+    )
+    required List<Genre> genres,
     @JsonKey(name: 'original_language') required String originalLanguage,
     @JsonKey(name: 'original_title') required String originalTitle,
     required String overview,

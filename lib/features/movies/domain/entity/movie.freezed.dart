@@ -24,8 +24,11 @@ mixin _$Movie {
   String get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'backdrop_path')
   String get backdropPath => throw _privateConstructorUsedError;
-  @JsonKey(name: 'genre_ids')
-  List<int> get genreIds => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'genre_ids',
+      fromJson: Genre.convertGenreIdsToGenreList,
+      toJson: Genre.convertGenreListToGenreIds)
+  List<Genre> get genres => throw _privateConstructorUsedError;
   @JsonKey(name: 'original_language')
   String get originalLanguage => throw _privateConstructorUsedError;
   @JsonKey(name: 'original_title')
@@ -53,7 +56,11 @@ abstract class $MovieCopyWith<$Res> {
       {int id,
       String title,
       @JsonKey(name: 'backdrop_path') String backdropPath,
-      @JsonKey(name: 'genre_ids') List<int> genreIds,
+      @JsonKey(
+          name: 'genre_ids',
+          fromJson: Genre.convertGenreIdsToGenreList,
+          toJson: Genre.convertGenreListToGenreIds)
+      List<Genre> genres,
       @JsonKey(name: 'original_language') String originalLanguage,
       @JsonKey(name: 'original_title') String originalTitle,
       String overview,
@@ -79,7 +86,7 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
     Object? id = null,
     Object? title = null,
     Object? backdropPath = null,
-    Object? genreIds = null,
+    Object? genres = null,
     Object? originalLanguage = null,
     Object? originalTitle = null,
     Object? overview = null,
@@ -101,10 +108,10 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
               as String,
-      genreIds: null == genreIds
-          ? _value.genreIds
-          : genreIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+      genres: null == genres
+          ? _value.genres
+          : genres // ignore: cast_nullable_to_non_nullable
+              as List<Genre>,
       originalLanguage: null == originalLanguage
           ? _value.originalLanguage
           : originalLanguage // ignore: cast_nullable_to_non_nullable
@@ -148,7 +155,11 @@ abstract class _$$MovieImplCopyWith<$Res> implements $MovieCopyWith<$Res> {
       {int id,
       String title,
       @JsonKey(name: 'backdrop_path') String backdropPath,
-      @JsonKey(name: 'genre_ids') List<int> genreIds,
+      @JsonKey(
+          name: 'genre_ids',
+          fromJson: Genre.convertGenreIdsToGenreList,
+          toJson: Genre.convertGenreListToGenreIds)
+      List<Genre> genres,
       @JsonKey(name: 'original_language') String originalLanguage,
       @JsonKey(name: 'original_title') String originalTitle,
       String overview,
@@ -172,7 +183,7 @@ class __$$MovieImplCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? backdropPath = null,
-    Object? genreIds = null,
+    Object? genres = null,
     Object? originalLanguage = null,
     Object? originalTitle = null,
     Object? overview = null,
@@ -194,10 +205,10 @@ class __$$MovieImplCopyWithImpl<$Res>
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
               as String,
-      genreIds: null == genreIds
-          ? _value._genreIds
-          : genreIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+      genres: null == genres
+          ? _value._genres
+          : genres // ignore: cast_nullable_to_non_nullable
+              as List<Genre>,
       originalLanguage: null == originalLanguage
           ? _value.originalLanguage
           : originalLanguage // ignore: cast_nullable_to_non_nullable
@@ -237,7 +248,11 @@ class _$MovieImpl extends _Movie {
       {required this.id,
       required this.title,
       @JsonKey(name: 'backdrop_path') required this.backdropPath,
-      @JsonKey(name: 'genre_ids') required final List<int> genreIds,
+      @JsonKey(
+          name: 'genre_ids',
+          fromJson: Genre.convertGenreIdsToGenreList,
+          toJson: Genre.convertGenreListToGenreIds)
+      required final List<Genre> genres,
       @JsonKey(name: 'original_language') required this.originalLanguage,
       @JsonKey(name: 'original_title') required this.originalTitle,
       required this.overview,
@@ -245,7 +260,7 @@ class _$MovieImpl extends _Movie {
       @JsonKey(name: 'poster_path') required this.posterPath,
       @JsonKey(name: 'release_date') required this.releaseDate,
       @JsonKey(name: 'vote_average') required this.voteAverage})
-      : _genreIds = genreIds,
+      : _genres = genres,
         super._();
 
   factory _$MovieImpl.fromJson(Map<String, dynamic> json) =>
@@ -258,13 +273,16 @@ class _$MovieImpl extends _Movie {
   @override
   @JsonKey(name: 'backdrop_path')
   final String backdropPath;
-  final List<int> _genreIds;
+  final List<Genre> _genres;
   @override
-  @JsonKey(name: 'genre_ids')
-  List<int> get genreIds {
-    if (_genreIds is EqualUnmodifiableListView) return _genreIds;
+  @JsonKey(
+      name: 'genre_ids',
+      fromJson: Genre.convertGenreIdsToGenreList,
+      toJson: Genre.convertGenreListToGenreIds)
+  List<Genre> get genres {
+    if (_genres is EqualUnmodifiableListView) return _genres;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_genreIds);
+    return EqualUnmodifiableListView(_genres);
   }
 
   @override
@@ -289,7 +307,7 @@ class _$MovieImpl extends _Movie {
 
   @override
   String toString() {
-    return 'Movie(id: $id, title: $title, backdropPath: $backdropPath, genreIds: $genreIds, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, voteAverage: $voteAverage)';
+    return 'Movie(id: $id, title: $title, backdropPath: $backdropPath, genres: $genres, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, voteAverage: $voteAverage)';
   }
 
   @override
@@ -301,7 +319,7 @@ class _$MovieImpl extends _Movie {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.backdropPath, backdropPath) ||
                 other.backdropPath == backdropPath) &&
-            const DeepCollectionEquality().equals(other._genreIds, _genreIds) &&
+            const DeepCollectionEquality().equals(other._genres, _genres) &&
             (identical(other.originalLanguage, originalLanguage) ||
                 other.originalLanguage == originalLanguage) &&
             (identical(other.originalTitle, originalTitle) ||
@@ -325,7 +343,7 @@ class _$MovieImpl extends _Movie {
       id,
       title,
       backdropPath,
-      const DeepCollectionEquality().hash(_genreIds),
+      const DeepCollectionEquality().hash(_genres),
       originalLanguage,
       originalTitle,
       overview,
@@ -353,7 +371,11 @@ abstract class _Movie extends Movie {
           {required final int id,
           required final String title,
           @JsonKey(name: 'backdrop_path') required final String backdropPath,
-          @JsonKey(name: 'genre_ids') required final List<int> genreIds,
+          @JsonKey(
+              name: 'genre_ids',
+              fromJson: Genre.convertGenreIdsToGenreList,
+              toJson: Genre.convertGenreListToGenreIds)
+          required final List<Genre> genres,
           @JsonKey(name: 'original_language')
           required final String originalLanguage,
           @JsonKey(name: 'original_title') required final String originalTitle,
@@ -375,8 +397,11 @@ abstract class _Movie extends Movie {
   @JsonKey(name: 'backdrop_path')
   String get backdropPath;
   @override
-  @JsonKey(name: 'genre_ids')
-  List<int> get genreIds;
+  @JsonKey(
+      name: 'genre_ids',
+      fromJson: Genre.convertGenreIdsToGenreList,
+      toJson: Genre.convertGenreListToGenreIds)
+  List<Genre> get genres;
   @override
   @JsonKey(name: 'original_language')
   String get originalLanguage;
