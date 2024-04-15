@@ -4,6 +4,7 @@ import 'package:visable_challenge/app/theme/token/visable_colors.dart';
 import 'package:visable_challenge/app/theme/visable_spacing.dart';
 import 'package:visable_challenge/app/theme/visable_typography.dart';
 import 'package:visable_challenge/app/utils/extension/context_extension.dart';
+import 'package:visable_challenge/features/movies/application/presentation/widgets/genres_widget.dart';
 import 'package:visable_challenge/features/movies/domain/entity/movie.dart';
 
 class DetailsView extends StatelessWidget {
@@ -55,6 +56,9 @@ class DetailsView extends StatelessWidget {
                                 style: context.typo.bodyMediumRegular.white,
                               ),
                             ],
+                          ),
+                          GenresWidget(
+                            genres: movie.genres,
                           ),
                         ],
                       ),
