@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:visable_challenge/app/components/movies_slider.dart';
 import 'package:visable_challenge/app/components/section_header.dart';
-import 'package:visable_challenge/app/theme/visable_spacing.dart';
-import 'package:visable_challenge/features/movies/application/presentation/widgets/movie_view_widget.dart';
+import 'package:visable_challenge/features/movies/application/presentation/widgets/movie_search_result_widget.dart';
 import 'package:visable_challenge/features/movies/application/presentation/widgets/section_list_view.dart';
 import 'package:visable_challenge/features/movies/application/presentation/widgets/section_list_view_card.dart';
 import 'package:visable_challenge/features/movies/application/presentation/widgets/slider_card.dart';
@@ -41,24 +40,7 @@ class MoviesWidget extends StatelessWidget {
           ),
           const SearchWidget(),
           if (searchResult.isNotEmpty) ...[
-            GridView.builder(
-              shrinkWrap: true,
-              padding: const EdgeInsets.all(
-                VisableSpacing.s12,
-              ),
-              itemCount: searchResult.length,
-              physics: const BouncingScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                crossAxisSpacing: 12,
-                childAspectRatio: 0.55,
-              ),
-              itemBuilder: (context, index) {
-                return MovieViewWidget(
-                  movie: searchResult[index],
-                );
-              },
-            )
+            MovieSearchResultWidget(searchResult: searchResult)
           ] else ...[
             SectionHeader(
               title: VisableStrings.popularMovies,
