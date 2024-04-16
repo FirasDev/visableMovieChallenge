@@ -19,21 +19,21 @@ mixin _$MoviesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Movie> movies) loadMovies,
-    required TResult Function(int movieGenreId) movieGenreFilter,
+    required TResult Function(List<int> genresIds) movieGenreFilter,
     required TResult Function(String query) searchMovie,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Movie> movies)? loadMovies,
-    TResult? Function(int movieGenreId)? movieGenreFilter,
+    TResult? Function(List<int> genresIds)? movieGenreFilter,
     TResult? Function(String query)? searchMovie,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Movie> movies)? loadMovies,
-    TResult Function(int movieGenreId)? movieGenreFilter,
+    TResult Function(List<int> genresIds)? movieGenreFilter,
     TResult Function(String query)? searchMovie,
     required TResult orElse(),
   }) =>
@@ -152,7 +152,7 @@ class _$LoadMoviesImpl implements _LoadMovies {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Movie> movies) loadMovies,
-    required TResult Function(int movieGenreId) movieGenreFilter,
+    required TResult Function(List<int> genresIds) movieGenreFilter,
     required TResult Function(String query) searchMovie,
   }) {
     return loadMovies(movies);
@@ -162,7 +162,7 @@ class _$LoadMoviesImpl implements _LoadMovies {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Movie> movies)? loadMovies,
-    TResult? Function(int movieGenreId)? movieGenreFilter,
+    TResult? Function(List<int> genresIds)? movieGenreFilter,
     TResult? Function(String query)? searchMovie,
   }) {
     return loadMovies?.call(movies);
@@ -172,7 +172,7 @@ class _$LoadMoviesImpl implements _LoadMovies {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Movie> movies)? loadMovies,
-    TResult Function(int movieGenreId)? movieGenreFilter,
+    TResult Function(List<int> genresIds)? movieGenreFilter,
     TResult Function(String query)? searchMovie,
     required TResult orElse(),
   }) {
@@ -233,7 +233,7 @@ abstract class _$$MovieGenreFilterImplCopyWith<$Res> {
           $Res Function(_$MovieGenreFilterImpl) then) =
       __$$MovieGenreFilterImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int movieGenreId});
+  $Res call({List<int> genresIds});
 }
 
 /// @nodoc
@@ -247,13 +247,13 @@ class __$$MovieGenreFilterImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? movieGenreId = null,
+    Object? genresIds = null,
   }) {
     return _then(_$MovieGenreFilterImpl(
-      null == movieGenreId
-          ? _value.movieGenreId
-          : movieGenreId // ignore: cast_nullable_to_non_nullable
-              as int,
+      genresIds: null == genresIds
+          ? _value._genresIds
+          : genresIds // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ));
   }
 }
@@ -261,14 +261,20 @@ class __$$MovieGenreFilterImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MovieGenreFilterImpl implements _MovieGenreFilter {
-  const _$MovieGenreFilterImpl(this.movieGenreId);
+  const _$MovieGenreFilterImpl({required final List<int> genresIds})
+      : _genresIds = genresIds;
 
+  final List<int> _genresIds;
   @override
-  final int movieGenreId;
+  List<int> get genresIds {
+    if (_genresIds is EqualUnmodifiableListView) return _genresIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_genresIds);
+  }
 
   @override
   String toString() {
-    return 'MoviesEvent.movieGenreFilter(movieGenreId: $movieGenreId)';
+    return 'MoviesEvent.movieGenreFilter(genresIds: $genresIds)';
   }
 
   @override
@@ -276,12 +282,13 @@ class _$MovieGenreFilterImpl implements _MovieGenreFilter {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MovieGenreFilterImpl &&
-            (identical(other.movieGenreId, movieGenreId) ||
-                other.movieGenreId == movieGenreId));
+            const DeepCollectionEquality()
+                .equals(other._genresIds, _genresIds));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, movieGenreId);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_genresIds));
 
   @JsonKey(ignore: true)
   @override
@@ -294,32 +301,32 @@ class _$MovieGenreFilterImpl implements _MovieGenreFilter {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Movie> movies) loadMovies,
-    required TResult Function(int movieGenreId) movieGenreFilter,
+    required TResult Function(List<int> genresIds) movieGenreFilter,
     required TResult Function(String query) searchMovie,
   }) {
-    return movieGenreFilter(movieGenreId);
+    return movieGenreFilter(genresIds);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Movie> movies)? loadMovies,
-    TResult? Function(int movieGenreId)? movieGenreFilter,
+    TResult? Function(List<int> genresIds)? movieGenreFilter,
     TResult? Function(String query)? searchMovie,
   }) {
-    return movieGenreFilter?.call(movieGenreId);
+    return movieGenreFilter?.call(genresIds);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Movie> movies)? loadMovies,
-    TResult Function(int movieGenreId)? movieGenreFilter,
+    TResult Function(List<int> genresIds)? movieGenreFilter,
     TResult Function(String query)? searchMovie,
     required TResult orElse(),
   }) {
     if (movieGenreFilter != null) {
-      return movieGenreFilter(movieGenreId);
+      return movieGenreFilter(genresIds);
     }
     return orElse();
   }
@@ -360,10 +367,10 @@ class _$MovieGenreFilterImpl implements _MovieGenreFilter {
 }
 
 abstract class _MovieGenreFilter implements MoviesEvent {
-  const factory _MovieGenreFilter(final int movieGenreId) =
+  const factory _MovieGenreFilter({required final List<int> genresIds}) =
       _$MovieGenreFilterImpl;
 
-  int get movieGenreId;
+  List<int> get genresIds;
   @JsonKey(ignore: true)
   _$$MovieGenreFilterImplCopyWith<_$MovieGenreFilterImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -434,7 +441,7 @@ class _$SearchMovieImpl implements _SearchMovie {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Movie> movies) loadMovies,
-    required TResult Function(int movieGenreId) movieGenreFilter,
+    required TResult Function(List<int> genresIds) movieGenreFilter,
     required TResult Function(String query) searchMovie,
   }) {
     return searchMovie(query);
@@ -444,7 +451,7 @@ class _$SearchMovieImpl implements _SearchMovie {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Movie> movies)? loadMovies,
-    TResult? Function(int movieGenreId)? movieGenreFilter,
+    TResult? Function(List<int> genresIds)? movieGenreFilter,
     TResult? Function(String query)? searchMovie,
   }) {
     return searchMovie?.call(query);
@@ -454,7 +461,7 @@ class _$SearchMovieImpl implements _SearchMovie {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Movie> movies)? loadMovies,
-    TResult Function(int movieGenreId)? movieGenreFilter,
+    TResult Function(List<int> genresIds)? movieGenreFilter,
     TResult Function(String query)? searchMovie,
     required TResult orElse(),
   }) {
@@ -514,6 +521,7 @@ mixin _$MoviesState {
   List<Movie> get trendingMovies => throw _privateConstructorUsedError;
   List<Movie> get upcomingMovies => throw _privateConstructorUsedError;
   List<Movie> get movieResults => throw _privateConstructorUsedError;
+  List<Genre> get genresFilter => throw _privateConstructorUsedError;
   MoviesStateStatus get status => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -532,6 +540,7 @@ abstract class $MoviesStateCopyWith<$Res> {
       List<Movie> trendingMovies,
       List<Movie> upcomingMovies,
       List<Movie> movieResults,
+      List<Genre> genresFilter,
       MoviesStateStatus status});
 }
 
@@ -552,6 +561,7 @@ class _$MoviesStateCopyWithImpl<$Res, $Val extends MoviesState>
     Object? trendingMovies = null,
     Object? upcomingMovies = null,
     Object? movieResults = null,
+    Object? genresFilter = null,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
@@ -571,6 +581,10 @@ class _$MoviesStateCopyWithImpl<$Res, $Val extends MoviesState>
           ? _value.movieResults
           : movieResults // ignore: cast_nullable_to_non_nullable
               as List<Movie>,
+      genresFilter: null == genresFilter
+          ? _value.genresFilter
+          : genresFilter // ignore: cast_nullable_to_non_nullable
+              as List<Genre>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -592,6 +606,7 @@ abstract class _$$MoviesStateImplCopyWith<$Res>
       List<Movie> trendingMovies,
       List<Movie> upcomingMovies,
       List<Movie> movieResults,
+      List<Genre> genresFilter,
       MoviesStateStatus status});
 }
 
@@ -610,6 +625,7 @@ class __$$MoviesStateImplCopyWithImpl<$Res>
     Object? trendingMovies = null,
     Object? upcomingMovies = null,
     Object? movieResults = null,
+    Object? genresFilter = null,
     Object? status = null,
   }) {
     return _then(_$MoviesStateImpl(
@@ -629,6 +645,10 @@ class __$$MoviesStateImplCopyWithImpl<$Res>
           ? _value._movieResults
           : movieResults // ignore: cast_nullable_to_non_nullable
               as List<Movie>,
+      genresFilter: null == genresFilter
+          ? _value._genresFilter
+          : genresFilter // ignore: cast_nullable_to_non_nullable
+              as List<Genre>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -645,11 +665,13 @@ class _$MoviesStateImpl implements _MoviesState {
       final List<Movie> trendingMovies = const [],
       final List<Movie> upcomingMovies = const [],
       final List<Movie> movieResults = const [],
+      final List<Genre> genresFilter = const [],
       this.status = MoviesStateStatus.loading})
       : _popularMovies = popularMovies,
         _trendingMovies = trendingMovies,
         _upcomingMovies = upcomingMovies,
-        _movieResults = movieResults;
+        _movieResults = movieResults,
+        _genresFilter = genresFilter;
 
   final List<Movie> _popularMovies;
   @override
@@ -687,13 +709,22 @@ class _$MoviesStateImpl implements _MoviesState {
     return EqualUnmodifiableListView(_movieResults);
   }
 
+  final List<Genre> _genresFilter;
+  @override
+  @JsonKey()
+  List<Genre> get genresFilter {
+    if (_genresFilter is EqualUnmodifiableListView) return _genresFilter;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_genresFilter);
+  }
+
   @override
   @JsonKey()
   final MoviesStateStatus status;
 
   @override
   String toString() {
-    return 'MoviesState(popularMovies: $popularMovies, trendingMovies: $trendingMovies, upcomingMovies: $upcomingMovies, movieResults: $movieResults, status: $status)';
+    return 'MoviesState(popularMovies: $popularMovies, trendingMovies: $trendingMovies, upcomingMovies: $upcomingMovies, movieResults: $movieResults, genresFilter: $genresFilter, status: $status)';
   }
 
   @override
@@ -709,6 +740,8 @@ class _$MoviesStateImpl implements _MoviesState {
                 .equals(other._upcomingMovies, _upcomingMovies) &&
             const DeepCollectionEquality()
                 .equals(other._movieResults, _movieResults) &&
+            const DeepCollectionEquality()
+                .equals(other._genresFilter, _genresFilter) &&
             (identical(other.status, status) || other.status == status));
   }
 
@@ -719,6 +752,7 @@ class _$MoviesStateImpl implements _MoviesState {
       const DeepCollectionEquality().hash(_trendingMovies),
       const DeepCollectionEquality().hash(_upcomingMovies),
       const DeepCollectionEquality().hash(_movieResults),
+      const DeepCollectionEquality().hash(_genresFilter),
       status);
 
   @JsonKey(ignore: true)
@@ -734,6 +768,7 @@ abstract class _MoviesState implements MoviesState {
       final List<Movie> trendingMovies,
       final List<Movie> upcomingMovies,
       final List<Movie> movieResults,
+      final List<Genre> genresFilter,
       final MoviesStateStatus status}) = _$MoviesStateImpl;
 
   @override
@@ -744,6 +779,8 @@ abstract class _MoviesState implements MoviesState {
   List<Movie> get upcomingMovies;
   @override
   List<Movie> get movieResults;
+  @override
+  List<Genre> get genresFilter;
   @override
   MoviesStateStatus get status;
   @override

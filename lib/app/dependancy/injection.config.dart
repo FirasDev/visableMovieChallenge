@@ -11,9 +11,9 @@
 import 'package:dio/dio.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:visable_challenge/app/dependancy/injection_module.dart' as _i11;
+import 'package:visable_challenge/app/dependancy/injection_module.dart' as _i12;
 import 'package:visable_challenge/features/movies/application/bloc/movies_bloc.dart'
-    as _i10;
+    as _i11;
 import 'package:visable_challenge/features/movies/data/api/movies_api.dart'
     as _i4;
 import 'package:visable_challenge/features/movies/data/api/remote_movies_api.dart'
@@ -22,6 +22,8 @@ import 'package:visable_challenge/features/movies/data/repository/movies_reposit
     as _i7;
 import 'package:visable_challenge/features/movies/domain/repository/movies_repository.dart'
     as _i6;
+import 'package:visable_challenge/features/movies/domain/usecases/filter_movie_usecase.dart'
+    as _i10;
 import 'package:visable_challenge/features/movies/domain/usecases/get_movies_usecase.dart'
     as _i9;
 import 'package:visable_challenge/features/movies/domain/usecases/search_movie_usecase.dart'
@@ -47,13 +49,16 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i8.SearchMovieUseCase(gh<_i6.MoviesRepository>()));
     gh.lazySingleton<_i9.GetMoviesUseCase>(
         () => _i9.GetMoviesUseCase(gh<_i6.MoviesRepository>()));
-    gh.factory<_i10.MoviesBloc>(() => _i10.MoviesBloc(
+    gh.lazySingleton<_i10.FilterMovieUseCase>(
+        () => _i10.FilterMovieUseCase(gh<_i6.MoviesRepository>()));
+    gh.factory<_i11.MoviesBloc>(() => _i11.MoviesBloc(
           gh<_i6.MoviesRepository>(),
           gh<_i9.GetMoviesUseCase>(),
           gh<_i8.SearchMovieUseCase>(),
+          gh<_i10.FilterMovieUseCase>(),
         ));
     return this;
   }
 }
 
-class _$RegisterModule extends _i11.RegisterModule {}
+class _$RegisterModule extends _i12.RegisterModule {}

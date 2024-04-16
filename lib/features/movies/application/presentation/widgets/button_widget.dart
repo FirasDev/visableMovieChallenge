@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:visable_challenge/app/theme/token/visable_colors.dart';
 import 'package:visable_challenge/app/theme/visable_spacing.dart';
 
-class DetailsViewBackButtonWidget extends StatelessWidget {
-  const DetailsViewBackButtonWidget({
+class BackButtonWidget extends StatelessWidget {
+  const BackButtonWidget({
     super.key,
   });
 

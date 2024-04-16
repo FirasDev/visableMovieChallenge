@@ -66,4 +66,30 @@ class RemoteMoviesApi implements MoviesApi {
       throw HttpExceptions.fromDioError(e);
     }
   }
+
+  @override
+  Future<List<Movie>> filterGenre({required String genres}) async {
+    const getMovieListTypeUrl = '/discover/movie';
+    final params = {
+      'api_key': TmdbConfig.tmdbApiKey,
+      'language': 'en-US',
+      'with_genres': genres,
+      'include_adult': 'false',
+      'page': 1,
+    };
+
+    try {
+      final Response<Map<String, dynamic>> response = await dio.get(
+        getMovieListTypeUrl,
+        queryParameters: params,
+      );
+      final List<Movie> movies = (response.data?['results'] as List)
+          .map((i) => Movie.fromJson(i as Map<String, dynamic>))
+          .toList();
+
+      return movies;
+    } on DioException catch (e) {
+      throw HttpExceptions.fromDioError(e);
+    }
+  }
 }

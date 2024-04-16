@@ -38,4 +38,18 @@ class MoviesRepositoryImpl implements MoviesRepository {
       return const Left(NoDataFoundFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, List<Movie>>> filterGenres({
+    required String genres,
+  }) async {
+    try {
+      final result = await moviesApi.filterGenre(
+        genres: genres,
+      );
+      return Right(result);
+    } on Exception catch (_) {
+      return const Left(NoDataFoundFailure());
+    }
+  }
 }

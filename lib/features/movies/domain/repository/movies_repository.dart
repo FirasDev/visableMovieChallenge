@@ -9,4 +9,7 @@ abstract class MoviesRepository {
   Future<Either<Failure, List<Movie>>> searchMovie({
     required String query,
   });
+  Future<Either<Failure, List<Movie>>> filterGenres({
+    required String genres,
+  });
 }

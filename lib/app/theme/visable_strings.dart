@@ -8,4 +8,5 @@ class VisableStrings {
   static const String movieSynopsis = 'Synopsis';
   static const String showMore = 'Show More';
   static const String showLess = 'Show Less';
+  static const String filter = 'Filter';
 }

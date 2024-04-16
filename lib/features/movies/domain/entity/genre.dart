@@ -36,6 +36,8 @@ class Genre with _$Genre {
             .id)
         .toList();
   }
+
+  static List<Genre> get genres => genresList;
 }
 
 const List<Genre> genresList = [

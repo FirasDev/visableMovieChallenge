@@ -7,4 +7,7 @@ abstract interface class MoviesApi {
   Future<List<Movie>> searchMovie({
     required String query,
   });
+  Future<List<Movie>> filterGenre({
+    required String genres,
+  });
 }
